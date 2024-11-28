@@ -15,11 +15,10 @@ class task(models.Model):
     # muss noch angepasst / überarbeitet werden
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
+    contacts = models.CharField(max_length=50)#pk
     date = models.CharField(max_length=50)
     priority = models.CharField(max_length=10)
-    subtasks = models.CharField(max_length=50)
-    subtasksProgress = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
+    subtasks = models.ListField(max_length=50)#manyToMany
+    subtasksProgress = models.CharField(max_length=50)
     colum = models.CharField(max_length=50)
-    contacts = models.CharField(max_length=50)
-    token = models.CharField(max_length=50)
