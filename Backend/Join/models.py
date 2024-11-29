@@ -11,14 +11,17 @@ class contact(models.Model):
     phone = models.CharField(max_length=20)
     color = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.Name
+
 class task(models.Model):
     # muss noch angepasst / überarbeitet werden
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    contacts = models.CharField(max_length=50)#pk
-    date = models.CharField(max_length=50)
+    contacts = models.ForeignKey(contact, on_delete=models.CASCADE)
+    date = models.DateField(max_length=50)
     priority = models.CharField(max_length=10)
     category = models.CharField(max_length=50)
-    subtasks = models.ListField(max_length=50)#manyToMany
-    subtasksProgress = models.CharField(max_length=50)
+    subtasks = models.JSONField()
+    subtasksProgress = models.IntegerField()
     colum = models.CharField(max_length=50)
