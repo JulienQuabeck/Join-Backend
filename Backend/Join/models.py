@@ -18,10 +18,14 @@ class task(models.Model):
     # muss noch angepasst / überarbeitet werden
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    contacts = models.ForeignKey(contact, on_delete=models.CASCADE)
-    date = models.DateField(max_length=50)
-    priority = models.CharField(max_length=10)
+    contacts = models.ManyToManyField(contact)
+    date = models.DateField(max_length=50)#evtl. CharField
+    priority = models.IntegerField()
     category = models.CharField(max_length=50)
     subtasks = models.JSONField()
     subtasksProgress = models.IntegerField()
     colum = models.CharField(max_length=50)
+
+class subtask(models.Model): # evtl. wieder löschen
+    name = models.CharField(max_length=50)
+    done = models.BooleanField(default=False)
